@@ -5,6 +5,9 @@ const config = {
   /** Rate Limit */
   rateLimit: process.env.RATE_LIMIT || 100,
   rateLimitTime: process.env.RATE_LIMIT_TIME || 60,
+
+  /** Client Dist */
+  clientDist: process.env.CLIENT_DIST || "../frontend/dist",
 };
 
 export default config;

@@ -1,8 +1,8 @@
 import { InvalidPayloadError } from "@/lib/express";
 import { Request, Response, NextFunction } from "express";
-import { ZodSchema } from "zod";
+import { Schema } from "zod";
 
-export const VerifyPayload = (schema: ZodSchema) => {
+export const VerifyPayload = (schema: Schema) => {
   return (req: Request, res: Response, next: NextFunction) => {
     const result = schema.safeParse(req.body);
     if (!result.success) {

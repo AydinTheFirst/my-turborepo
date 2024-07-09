@@ -1,8 +1,12 @@
-import { Handler } from "express";
 import { TokenModel } from "@/database/models/Token";
 import { UserModel } from "@/database/models/User";
+import { Request, Response, NextFunction } from "express";
 
-export const BearerAuth: Handler = async (req, res, next) => {
+export const BearerAuth = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   let token = req.headers["authorization"];
 
   if (!token) return next();

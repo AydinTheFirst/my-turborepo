@@ -1,6 +1,5 @@
 import { Handler } from "express";
 import chalk from "chalk";
-
 export * from "./cors";
 export * from "./auth";
 export * from "./rateLimit";
