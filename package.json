@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "start": "cd apps/backend && npm run start",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
@@ -8,7 +9,7 @@
   },
   "devDependencies": {
     "eslint": "^8.57.0",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.2",
     "turbo": "^2.0.6"
   },
   "packageManager": "pnpm@8.15.6",

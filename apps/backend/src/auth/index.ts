@@ -1,0 +1,24 @@
+import { Handler } from "express";
+import { TokenModel } from "@/database/models/Token";
+import { UserModel } from "@/database/models/User";
+
+export const BearerAuth: Handler = async (req, res, next) => {
+  let token = req.headers["authorization"];
+
+  if (!token) return next();
+
+  if (token.startsWith("Bearer ")) token = token.slice(7, token.length);
+
+  const tokenDoc = await TokenModel.findOne({ token });
+
+  if (!tokenDoc) return next();
+  if (tokenDoc.expiresAt < Date.now()) return next();
+
+  const user = await UserModel.findById(tokenDoc.userId);
+
+  if (!user) return next();
+
+  req.user = user;
+
+  next();
+};
