@@ -1,19 +1,28 @@
-import { Section } from "@/components/Section";
+import { CenteredCard } from "@/components/CenteredCard";
 import { Button } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <Section>
-      <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-4xl font-bold text-transparent md:text-7xl">
-        The page you are looking for does not exist.
-      </h1>
-      <br />
-
-      <Button to={"/"} as={Link}>
-        Go Home
-      </Button>
-    </Section>
+    <CenteredCard>
+      <div className="grid gap-5">
+        <h1 className="text-center text-3xl font-bold md:text-5xl">404</h1>
+        <h3
+          className="text-center text-lg font-bold md:text-2xl"
+          style={{ color: "#FF4D4F" }}
+        >
+          Oops!, <span className="font-bold">Page Not Found</span>
+        </h3>
+        <p className="text-center text-lg font-bold">
+          The page you are looking for does not exist.
+        </p>
+        <div className="flex justify-center">
+          <Button as={Link} to={"/"} size="sm" color="primary" fullWidth>
+            Go Home
+          </Button>
+        </div>
+      </div>
+    </CenteredCard>
   );
 };
 

@@ -1,5 +1,7 @@
 import { ErrorBoundary } from "react-error-boundary";
 import { Outlet } from "react-router-dom";
+import { CenteredCard } from "./CenteredCard";
+import { Button } from "@nextui-org/react";
 
 function fallbackRender({
   error,
@@ -9,18 +11,30 @@ function fallbackRender({
   resetErrorBoundary: () => void;
 }) {
   return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
-    </div>
+    <CenteredCard>
+      <h1 className="p-3 text-center text-2xl">Something went wrong</h1>
+      <p className="text-center">
+        There was an error while rendering this component.
+      </p>
+      <br />
+      <pre style={{ whiteSpace: "normal" }} className="text-sm text-red-500">
+        {error.message}
+      </pre>
+      <br />
+      <Button
+        onClick={resetErrorBoundary}
+        color="danger"
+        size="sm"
+        className="w-full"
+      >
+        Reload
+      </Button>
+    </CenteredCard>
   );
 }
 
-export const ErrorCatcher = () => {
-  return (
-    <ErrorBoundary FallbackComponent={fallbackRender}>
-      <Outlet />
-    </ErrorBoundary>
-  );
-};
+export const ErrorBoundaryLayout = () => (
+  <ErrorBoundary FallbackComponent={fallbackRender}>
+    <Outlet />
+  </ErrorBoundary>
+);
