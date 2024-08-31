@@ -1,7 +1,5 @@
-import { HomeLayout } from "@/layouts/HomeLayout";
-
 const Home = () => {
-  return <HomeLayout>Hello World</HomeLayout>;
+  return "Hello World";
 };
 
 export default Home;

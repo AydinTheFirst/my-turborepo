@@ -29,13 +29,6 @@ export default {
           },
         },
       },
-      layout: {
-        radius: {
-          large: "0.5rem",
-          medium: "0.25rem",
-          small: "0.125rem",
-        },
-      },
     }),
   ],
 };

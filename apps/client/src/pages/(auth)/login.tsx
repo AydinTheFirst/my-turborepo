@@ -1,4 +1,4 @@
-import { Center } from "@/components/Center";
+import { CenteredCard } from "@/components/CenteredCard";
 import { PasswordInput } from "@/components/PasswordInput";
 import { http, httpError } from "@/lib/http";
 import { sleep } from "@/utils";
@@ -25,7 +25,7 @@ const Login = () => {
   };
 
   return (
-    <Center>
+    <CenteredCard>
       <form onSubmit={handleSubmit} className="grid gap-3">
         <Input
           label="Mail / Kullanıcı Adı"
@@ -48,7 +48,7 @@ const Login = () => {
           Kayıt ol
         </button>
       </p>
-    </Center>
+    </CenteredCard>
   );
 };
 

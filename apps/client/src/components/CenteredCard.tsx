@@ -1,4 +1,5 @@
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
+import React from "react";
 
 export const CenteredCard = ({
   children,
@@ -8,10 +9,14 @@ export const CenteredCard = ({
   title?: string;
 }) => {
   return (
-    <div className="container grid min-h-screen place-items-center">
-      <div className="grid w-full gap-3 p-3 md:p-5">
-        <Card className="mx-auto w-full md:w-1/2 lg:w-1/3">
-          {title && <CardHeader>{title}</CardHeader>}
+    <div className="container h-screen">
+      <div className="grid h-full place-items-center">
+        <Card className="w-full max-w-lg">
+          {title && (
+            <CardHeader className="justify-center">
+              <h1 className="text-center text-2xl font-bold">{title}</h1>
+            </CardHeader>
+          )}
           <CardBody>{children}</CardBody>
         </Card>
       </div>
