@@ -1,6 +1,8 @@
+import "dotenv/config";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "@/routes/app";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
+import { ValidationPipe } from "@nestjs/common";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -8,6 +10,8 @@ async function bootstrap() {
       origin: "*",
     },
   });
+
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
   const config = new DocumentBuilder()
     .setTitle("API EXAMPLE")
@@ -17,6 +21,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("swagger", app, document);
 
-  await app.listen(8080);
+  await app.listen(3000);
 }
 bootstrap();

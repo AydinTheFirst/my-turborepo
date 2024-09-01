@@ -45,3 +45,18 @@ model Token {
 
   @@map("tokens")
 }
+
+model ServiceRecord {
+  id String @id @default(uuid())
+
+  userId String
+
+  status String @default("pending")
+
+  events String[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("service_records")
+}

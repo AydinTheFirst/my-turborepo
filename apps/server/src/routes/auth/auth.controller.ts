@@ -6,14 +6,12 @@ import {
   HttpStatus,
   Post,
   UseGuards,
-  UsePipes,
 } from "@nestjs/common";
 import { User } from "@prisma/client";
 import { AuthService } from "./auth.service";
-import { ZodValidationPipe } from "@/pipes";
 import { GetUser } from "@/decorators";
 import { AuthGuard } from "@/guards";
-import { LoginDto, LoginSchema, RegisterDto, RegisterSchema } from "./auth.dto";
+import { LoginDto, RegisterDto } from "./auth.dto";
 
 @Controller("auth")
 export class AuthController {
@@ -27,14 +25,12 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post("login")
-  @UsePipes(new ZodValidationPipe(LoginSchema))
   login(@Body() body: LoginDto) {
     return this.authService.login(body);
   }
 
   @HttpCode(HttpStatus.OK)
   @Post("register")
-  @UsePipes(new ZodValidationPipe(RegisterSchema))
   register(@Body() body: RegisterDto) {
     return this.authService.register(body);
   }

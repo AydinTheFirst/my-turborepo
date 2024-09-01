@@ -7,16 +7,9 @@ import {
   Post,
   Put,
   UseGuards,
-  UsePipes,
 } from "@nestjs/common";
 import { UsersService } from "./users.service";
-import { ZodValidationPipe } from "@/pipes";
-import {
-  CreateUserDto,
-  CreateUserSchema,
-  UpdateUserDto,
-  UpdateUserSchema,
-} from "./users.dto";
+import { CreateUserDto, UpdateUserDto } from "./users.dto";
 import { AuthGuard, RolesGuard } from "@/guards";
 import { GetUser, Roles } from "@/decorators";
 import { User } from "@prisma/client";
@@ -40,13 +33,11 @@ export class UsersController {
   @Post()
   @UseGuards(RolesGuard)
   @Roles([UserRole.Admin])
-  @UsePipes(new ZodValidationPipe(CreateUserSchema))
   async create(@Body() body: CreateUserDto) {
     return await this.usersService.create(body);
   }
 
   @Put(":id")
-  @UsePipes(new ZodValidationPipe(UpdateUserSchema))
   async update(
     @Param("id") id: string,
     @Body() body: UpdateUserDto,

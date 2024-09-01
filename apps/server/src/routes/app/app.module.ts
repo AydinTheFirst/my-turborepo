@@ -11,7 +11,9 @@ import { AppController } from "./app.controller";
 import { UsersModule } from "@/routes/users";
 import { AuthModule } from "@/routes/auth";
 import { TokensModule } from "@/routes/tokens";
-import { PostsModule } from "@/routes/posts";
+
+import { MailerModule } from "@nestjs-modules/mailer";
+import { mailerConfig } from "@/config";
 
 @Module({
   imports: [
@@ -24,11 +26,11 @@ import { PostsModule } from "@/routes/posts";
         limit: 10,
       },
     ]),
+    MailerModule.forRoot(mailerConfig),
     PrismaModule,
     UsersModule,
     AuthModule,
     TokensModule,
-    PostsModule,
   ],
   controllers: [AppController],
   providers: [],
